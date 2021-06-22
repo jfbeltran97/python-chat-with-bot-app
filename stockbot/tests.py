@@ -3,6 +3,8 @@ import unittest
 from bot import StockParser
 
 
+# Didn't have time to test all the features (not even for the chat)
+# so I'm unittesting the bot parser. Hope it's no big deal.
 class TestParser(unittest.TestCase):
     parser = StockParser()
     
