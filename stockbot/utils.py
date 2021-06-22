@@ -60,7 +60,7 @@ def get_chatroom_slug(auth_token):
             print(f'{i+1}: {chatroom["topic"]}')
         n = input('Please enter the chatroom number to connect to: ')
         chatroom_count = len(chatrooms)
-        while not n.isdigit() or int(n) not in range(chatroom_count):
+        while not n.isdigit() or int(n) not in range(1, chatroom_count + 1):
             n = input('Not a valid option. Try again:')
         chosen_chatroom = chatrooms[int(n)-1]
         return chosen_chatroom['slug']

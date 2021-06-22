@@ -29,14 +29,16 @@ class AuthService(APIService):
     url = build_url(SERVER_API_LOGIN_ENDPOINT)
     username = BOT_USERNAME
     password = BOT_PASSWORD
+    token = None
 
     def login(self):
         response = requests.post(self.url, json={
             'username': self.username,
             'password': self.password,
         })
-        response = response.ok and response.json()
-        self.token = response['token']
+        if response.ok:
+            response = response.json()
+            self.token = response['token']
         return self.token
 
 
@@ -50,5 +52,7 @@ class ChatService(APIService):
         response = requests.get(self.url, headers={
             'Authorization': f'Token {self.token}'
         })
-        response = response.ok and response.json()
-        return response
+        if response.ok:
+            response = response.json()
+            return response
+        return []

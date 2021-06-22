@@ -4,7 +4,7 @@
     <h2>Chat Rooms</h2>
     <ul>
         {% for chat in chatrooms %}
-            <a href="{% url 'chatroom-detail' chat.slug %}">{{ chat.topic }}</a>
+            <li><a href="{% url 'chatroom-detail' chat.slug %}">{{ chat.topic }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
